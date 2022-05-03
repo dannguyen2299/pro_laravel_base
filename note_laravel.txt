@@ -1,0 +1,84 @@
+ngrok http cổng
+----------------------TAO PROJECT<"""blog version 5.8""">----------------------
+composer create-project --prefer-dist laravel/laravel 
+git add .
+git status
+git commit -m "đâs"
+git push
+
+link 127/.../fortend   =>>>>> /
+
+
+----------------------DATABASE----------------------
+*model : tác động đến bảng
+*migration : khung bảng
+	-php artisan make:migration <tenbang-thuong la :create_user_table>  // tạo khung bảng
+	-Tao CSDL tren xampp-,...vv
+	-file env 12,13,14  && file config-database.php :51,52,53 
+	-php artisan migrate (thực thi tạo bảng trong csdl)
+
+*seed	   : insert
+-Insert
+	+php artisan make:seeder <bảng cần insert>
+	+(insert xong)- file databaseSeeder < $this->call(<ten_seed>::class);>
+		      -php artisan db:seed
+
+-Lien ket bang
+	+ 1-n Bang 1  
+<<
+public function product_order(){
+        return $this->hasMany('App\models','foreign_key','local_key');
+    }
+
+>>
+-----------------------------controller 
+//controller dieu huong
+	php artisan make:controller <ten controller-dan link>
+
+-----------------------------Request
+check request từ form
+	php artisan make :request NAME-REQUEST
+	* -true   -> fuc(rules() && messages)
+	* form -method 
+	* @csrf
+
+-----------------------------Function
+
+b1: tạo foler-> function.php
+b2: khai báo trong conposer.json----> autoload ----> "files":["app/<foler>/function.php"]
+b3: chạy lệnh conposer dump-autoload
+
+b4: kiểm tra đã được chưa -> vendor/composer/autoload_file 
+-----------------------------Đăng nhập -Auth
+Thư viện : use Illuminate\Support\Facades\Auth;
+loginController 
+
+	function PostLogin(LoginRequest  $r){
+        $email=$r->email;
+        $password=$r->password;
+        
+        if(Auth::attempt(['email' => $email, 'password' => $password]))
+        {
+            return redirect('admin');
+        }
+        else{
+            return redirect()->back();
+        }
+       
+    }
+
+-----------------------------Middleware
+-kiểm duyệt đăng nhập
+b1: php artisan make:middleware 
+b2: khai báo  http/kernel.php     <name>=> \App\Http\Middleware\<name>::class,
+b3: web 
+Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {}
+
+-----------------------------Model- Tác động đến bảng
+php artisan make:model
+
+
+-----------------------------Hiển thị
+1, Tạo model -liên kết với bảng trong database
+2, controller -add thư viện tạo truy vẫn
+3, view hiển thị

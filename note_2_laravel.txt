@@ -1,0 +1,120 @@
+< create database mysql WB>
+	php artisan serve migrate:refresh --seed
+
+<    >
+
+
+composer dump-autoload
+php artisan make:request AddCategoryRequest: tạo file request
+php artisan make:controller mycontroller : tạo file controller
+php artisan serve: lấy link
+ php artisan migrate:fresh
+php artisan migrate:rollback
+----------------------------------------------GIT
+tạo forder lưu thư mục
+1     composer install "<link git>"
+2      Copy .env.example .env	
+3	thay đổi tên data base
+4	 php artisan key:generate
+5	 php artisan serve (khởi động server của laravel để chạy project)  
+git base here "git pull"
+----------------------------------------------
+****tạo 1 project laravel mới
+
+1-tao thư mục
+2-shift + chuột phải 
+3 nhập : composer create-project --prefer-dist laravel/laravel vietprok81
+ **** 
+php artisan make:seeder
+php artisan db:seed
+
+<------------ Mở 1 project laravel -------------->
+ composer install <"chuột phải chon open..windowher ">
+2      Copy .env.example .env	
+3	thay đổi tên data base
+4	 php artisan key:generate
+5	 php artisan serve (khởi động server của laravel để chạy project)
+<------------------>
+
+
+
+<><><><
+1 git clone linkgit (mở ko cần chuột trái)
+2 doi data trong file .evn
+2 doi data trong file databass trong config
+<><><><
+
+
+
+đổi cổng php artisan --port cổngmuốnđổi
+
+<MIGRATION> 
+
+Thao tác file env, config/database
+thực thi liên quan đến database trong thư mục/'/
+tạo bảng: php artisan make:migration create_name-table_table
+thực thi : php artisan migrate
+
+<model ket noi voi data>
+	php artisan make:model models/Order
+	belongTo 1-1 (từ bảng 1 -> nhiều)
+<protected $table='user';
+public $timestamps=false;>
+
+hiển thị
+cần khai báo khitaoj lệnh với bảng trong thư mục models ở thư muc seeds/database 
+vd  $this->call(tên file::class);
+<>
+
+
+
+
+{!! <thực thi thẻ trong đuôi blade.php vd > !!} thay thế  cho <?php echo>
+
+vd 
+đuôi.php 
+
+ $a['binh']='<b>abc</b>';-> .blade.php {!! $binh !!}
+
+<login& logout>
+tao middleware :ktra login
+php artisan make:middleware CheckLogin
+tạo xong vào  kernel.php khai báo trong routeMidd
+	'CheckLogin' => \App\Http\Middleware\CheckLogin::class,
+<>
+
+<Giỏ hàng>
+	chạy termi composer require bumbummen99/shoppingcart
+	verdo->bumbummen->shoppingcart->config->cartt-> tax=0;
+<Giỏ hàng>
+
+
+print_r($mang) in cả mảng
+   
+
+foreach ($mang as $a=>$b){
+	echo $b.'<br>'               <$b la value>
+}
+                                                       key bên controller -> biến bên .blade.php
+<?php
+$data = [['so1'=>'pham thai An', 'so2'=>'binh'], 
+ ['so1'=>'thai anh', 'so2'=>'hai']];
+
+foreach ($data as $val) {
+    print_r($val['so1'].'--------->'.$val['so2']);
+    echo '<hr>';}
+
+foreach( $data  as $val){
+echo implode('---->',$val);}
+?>
+
+
+// Check value input 
+php artisan make:request nameRequest 
+
+
+//Tạo function 
+	1, Tạo file
+	2, Khai báo trong composer.json (dòng 34 )
+	3, composer dump-autoload
+		=> check vendor/composer/autoload-file 
